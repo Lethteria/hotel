@@ -25,6 +25,39 @@ var Hotel={
     /*numbOfBusyRooms: function(){
      return this.percentBusy * this.numbOfRooms
      },*/
+    checkRoom: function(id){
+        if (this.rooms[id].guest){
+            return true;
+        }
+    },
+
+    occupancy: function(){
+        for (var i=0; i < this.numbOfBusyRooms; i++){
+            do {
+                var j = Math.floor( Math.random() * this.rooms.length );
+            } while (this.checkRoom(j));
+            this.rooms[j].guest = faker.name.findName();
+        }
+    },
+
+    showGuest: function(){
+        for (var i=0;i<this.rooms.length;i++){
+            if (this.rooms[i].guest){
+                console.log(this.rooms[i]);
+            }
+        }
+    },
+
+    roomWithGuest: function(){
+        for (var i=0;i<this.rooms.length;i++){
+            if(this.checkRoom(i)) {
+                var roomId = this.rooms[i].id,
+                    Info = document.createElement('span');
+                    Info.innerHTML = " !!!",
+                    document.getElementById(roomId).appendChild(Info)
+            }
+        }
+    },
 
     show: function(){
         for (var i=0;i<this.rooms.length;i++){
@@ -51,6 +84,10 @@ var Hotel={
 };
 console.log(Hotel.rooms.length);
 Hotel.show();
+Hotel.occupancy();
+Hotel.showGuest();
+Hotel.roomWithGuest();
+//console.log(Hotel.rooms);
 //console.log(Hotel.numbOfBusyRooms());
 
 
