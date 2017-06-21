@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  //font-family: inherit;
+  font-style: inherit;
+  //font-size: 100%;
+  border: 0 none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline-style: none;
+}
+button {
+  text-align: center;
+}
+ul {
+  li {
+    list-style: none;
+    display: inline-block;
+    float: left;
+  }
+}
+
+a {
+  text-decoration: none
+}
+
+/*header, footer, section, article, nav{
+  display: block;
+}*/
+
+@font-face {
+  font-family: 'Open-sans Regular';
+  src: url('../fonts/OpenSans/opensans-regular.woff2') format('woff2'),
+  url('../fonts/OpenSans/opensans-regular.woff') format('woff'),
+  url('../fonts/OpenSans/OpenSans-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello/font/fontello.eot') format('eot'),
+  url('../fonts/fontello/font/fontello.woff2') format('woff2'),
+  url('../fonts/fontello/font/fontello.woff') format('woff'),
+  url('../fonts/fontello/font/fontello.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}*/
+body {
+  font-family: 'Open-sans Regular';
+  font-size: 14px;
+}
+
+.clearfix, .row {
+  &:after  {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  .col {
+    float: left;
+    box-sizing: border-box;
+    padding: 0 0.75rem;
+  }
+
+    .s1 {
+      width: 8.333333333333333%;
+      margin-left: auto;
+      left: auto;
+      right: auto;
+    }
+    .s2 {
+      @extend .s1;
+      width: 16.66666666666667%;
+    }
+    .s3 {
+      @extend .s1;
+      width: 25%;
+    }
+    .s4 {
+      @extend .s1;
+      width: 33.33333333333333%;
+    }
+    .s5 {
+      @extend .s1;
+      width: 41.66666666666667%;
+    }
+    .s6 {
+      @extend .s1;
+      width: 50%;
+    }
+    .s7 {
+      @extend .s1;
+      width: 58.33333333333333%;
+    }
+    .s8 {
+      @extend .s1;
+      width: 66.66666666666667%;
+    }
+    .s9 {
+      @extend .s1;
+      width: 75%;
+    }
+    .s10 {
+      @extend .s1;
+      width: 83.33333333333333%;
+    }
+    .s11 {
+      @extend .s1;
+      width: 91.66666666666667%;
+    }
+    .s12 {
+      @extend .s1;
+      width: 100%;
+    }
+  }
+
+@media (min-width: 601px) {
+  .row {
+      .m1 {
+        width: 8.333333333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+      }
+      .m2 {
+        @extend .m1;
+        width: 16.66666666666667%;
+      }
+      .m3 {
+        @extend .m1;
+        width: 25%;
+      }
+      .m4 {
+        @extend .m1;
+        width: 33.33333333333333%;
+      }
+      .m5 {
+        @extend .m1;
+        width: 41.66666666666667%;
+      }
+      .m6 {
+        @extend .m1;
+        width: 50%;
+      }
+      .m7 {
+        @extend .m1;
+        width: 58.33333333333333%;
+      }
+      .m8 {
+        @extend .m1;
+        width: 66.66666666666667%;
+      }
+      .m9 {
+        @extend .m1;
+        width: 75%;
+      }
+      .m10 {
+        @extend .m1;
+        width: 83.33333333333333%;
+      }
+      .m11 {
+        @extend .m1;
+        width: 91.66666666666667%;
+      }
+      .m12 {
+        @extend .m1;
+        width: 100%;
+      }
+    }
+}
+
+@media (min-width: 993px) {
+  .row {
+    .l1 {
+      width: 8.333333333333333%;
+      margin-left: auto;
+      left: auto;
+      right: auto;
+    }
+    .l2 {
+      @extend .l1;
+      width: 16.66666666666667%;
+    }
+    .l3 {
+      @extend .l1;
+      width: 25%;
+    }
+    .l4 {
+      @extend .l1;
+      width: 33.33333333333333%;
+    }
+    .l5 {
+      @extend .l1;
+      width: 41.66666666666667%;
+    }
+    .l6 {
+      @extend .l1;
+      width: 50%;
+    }
+    .l7 {
+      @extend .l1;
+      width: 58.33333333333333%;
+    }
+    .l8 {
+      @extend .l1;
+      width: 66.66666666666667%;
+    }
+    .l9 {
+      @extend .l1;
+      width: 75%;
+    }
+    .l10 {
+      @extend .l1;
+      width: 83.33333333333333%;
+    }
+    .l11 {
+      @extend .l1;
+      width: 91.66666666666667%;
+    }
+    .l12 {
+      @extend .l1;
+      width: 100%;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
