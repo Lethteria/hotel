@@ -7,31 +7,50 @@ var Hotel={
              {id:6,type:"standard"},
              {id:7,type:"standard"},
              {id:8,type:"standard"},
-             {id:9,type:"luxe"},
-             {id:10,type:"luxe"},
-             {id:11,type:"luxe"},
-             {id:12,type:"luxe"},
-             {id:13,type:"luxe"},
-             {id:14,type:"luxe"},
-             {id:15,type:"luxe"},
+             {id:9,type:"lux"},
+             {id:10,type:"lux"},
+             {id:11,type:"lux"},
+             {id:12,type:"lux"},
+             {id:13,type:"lux"},
+             {id:14,type:"lux"},
+             {id:15,type:"lux"},
              {id:16,type:"economy"},
              {id:17,type:"economy"},
              {id:18,type:"economy"},
              {id:19,type:"economy"},
              {id:20,type:"economy"}],
+    percentBusy: 0.3,
+    numbOfRooms: 20,
+    numbOfBusyRooms: 6,
+    /*numbOfBusyRooms: function(){
+     return this.percentBusy * this.numbOfRooms
+     },*/
 
     show: function(){
         for (var i=0;i<this.rooms.length;i++){
-            if (this.rooms[i].type == 'economy'){
+            var roomType = this.rooms[i].type,
+                roomId = this.rooms[i].id;
+            if (roomType == 'economy'){
                 var newRoom = document.createElement('div');
-                newRoom.innerHTML = 'Room standart';
-                document.getElementById('standardRoom').appendChild(newRoom);
-                console.log(this.rooms[i]);
+                newRoom.innerHTML = 'Room '+roomType;
+                document.getElementById('economyRoom').appendChild(newRoom).setAttribute('id', roomId);
+                //console.log(this.rooms[i]);
+            } else {
+                if (roomType == 'lux'){
+                    var newRoom = document.createElement('div');
+                    newRoom.innerHTML = 'Room '+roomType;
+                    document.getElementById('luxRoom').appendChild(newRoom).setAttribute('id', roomId);
+                } else {
+                    var newRoom = document.createElement('div');
+                    newRoom.innerHTML = 'Room '+roomType;
+                    document.getElementById('standardRoom').appendChild(newRoom).setAttribute('id', roomId);
+                }
             }
         }
     }
 };
 console.log(Hotel.rooms.length);
 Hotel.show();
+//console.log(Hotel.numbOfBusyRooms());
 
 
