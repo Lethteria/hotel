@@ -102,6 +102,12 @@ var Hotel={
         this.numbOfBusyRooms++;
         this.showBusyRooms();
         this.showFreeRooms();
+    },
+    removeGuest: function(id){
+        var room = this.rooms[id];
+        for (var key in room) {
+            delete key
+        }
     }
 };
 
@@ -142,9 +148,8 @@ container.on('click','div.hotel-room',function(){
             surname = form.find('input[name=guestSurname]').val(),
             phone = form.find('input[name=guestPhone]').val(),
             email = form.find('input[type=email]').val();
-        console.log('0');
+        //console.log('0');
         console.log(roomId);
-
 
         form.submit(function(e){
             e.preventDefault();
@@ -153,6 +158,9 @@ container.on('click','div.hotel-room',function(){
             console.log(Hotel.rooms[roomId]);
         });
         console.log(roomId);
+    } else {
+        roomBlock.after('<form class="removeGuest"><span>Очистить номер?</span>' +
+        '<div><button id="closeForm" type="button">Нет</button><button id="clearRoom" type="submit">Да</button></div></form>')
     }
 });
 
