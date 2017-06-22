@@ -149,3 +149,19 @@ body {
 @media (min-width: 1200px) {
   .container {
     width: 1170px; } }
+
+.hotel {
+  padding: 50px; }
+  .hotel h2 {
+    margin-bottom: 1%;
+    font-size: 36px; }
+  .hotel .number-of-rooms {
+    margin-bottom: 10px;
+    font-size: 16px; }
+  .hotel .room-wrap .item-title {
+    margin-bottom: 20px;
+    font-size: 20px; }
+  .hotel .hotel-room {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid; }

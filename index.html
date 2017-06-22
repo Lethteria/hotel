@@ -9,14 +9,16 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container hotel">
         <h2>Отель</h2>
 
-        <p>Количество свободных номеров: <span id="freeRooms"></span></p>
-        <p>Количество заселенных номеров: <span id="busyRooms"></span></p>
+        <p class="number-of-rooms">Количество свободных номеров: <span id="freeRooms"></span></p>
+        <p class="number-of-rooms">Количество заселенных номеров: <span id="busyRooms"></span></p>
 
         <div id="standardRoom" class="room-wrap">
-            <h3>Standart</h3>
+            <h3 class="item-title">Standart</h3>
+
+            <div class="row"></div>
 
             <form id="checkInStRoom" class="form-open">
                 <div class="clearfix">
@@ -33,10 +35,12 @@
 
         <div id="luxRoom" class="room-wrap">
             <h3>Lux</h3>
+            <div class="row"></div>
         </div>
 
         <div id="economyRoom" class="room-wrap">
             <h3>Economy</h3>
+            <div class="row"></div>
         </div>
     </div>
 

@@ -64,11 +64,15 @@ var Hotel={
                 //roomId = this.rooms[i].id;
                 roomId = i+1;
             if (roomType == 'economy'){
-                var newRoom = document.createElement('div');
+                var Col = document.createElement('div'),
+                    newRoom = document.createElement('div');
+                    document.getElementById('economyRoom').getElementsByTagName('div')[0].appendChild(Col);
                 newRoom.innerHTML = 'Room '+roomType;
-                document.getElementById('economyRoom').appendChild(newRoom).setAttribute('id', roomId);
+                console.log(newRoom);
+                Col.setAttribute('class', 'col l1');
+                Col.appendChild(newRoom).setAttribute('id', roomId);
                 newRoom.setAttribute('class', 'hotel-room');
-                //console.log(this.rooms[i]);
+
             } else {
                 if (roomType == 'lux'){
                     var newRoom = document.createElement('div');
@@ -114,6 +118,9 @@ var Hotel={
         }
         room.id = Id;
         room.type = type;
+        this.numbOfBusyRooms--;
+        this.showBusyRooms();
+        this.showFreeRooms();
         console.log(room);
     }
 };
