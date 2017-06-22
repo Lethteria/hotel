@@ -61,7 +61,8 @@ var Hotel={
     showRooms: function(){
         for (var i=0;i<this.rooms.length;i++){
             var roomType = this.rooms[i].type,
-                roomId = this.rooms[i].id;
+                //roomId = this.rooms[i].id;
+                roomId = i+1;
             if (roomType == 'economy'){
                 var newRoom = document.createElement('div');
                 newRoom.innerHTML = 'Room '+roomType;
@@ -104,10 +105,16 @@ var Hotel={
         this.showFreeRooms();
     },
     removeGuest: function(id){
-        var room = this.rooms[id];
+        var room = this.rooms[id],
+            type = room.type,
+            Id = room.id;
+
         for (var key in room) {
-            delete key
+            delete room[key];
         }
+        room.id = Id;
+        room.type = type;
+        console.log(room);
     }
 };
 
@@ -118,6 +125,7 @@ Hotel.showGuest();
 Hotel.showBusyRooms();
 Hotel.showFreeRooms();
 Hotel.roomWithGuest();
+
 //console.log(Hotel.rooms);
 //console.log(Hotel.numbOfBusyRooms());
 
@@ -160,7 +168,9 @@ container.on('click','div.hotel-room',function(){
         console.log(roomId);
     } else {
         roomBlock.after('<form class="removeGuest"><span>Очистить номер?</span>' +
-        '<div><button id="closeForm" type="button">Нет</button><button id="clearRoom" type="submit">Да</button></div></form>')
+        '<div><button id="closeForm" type="button">Нет</button><button id="clearRoom" type="submit">Да</button></div></form>');
+        Hotel.removeGuest(roomId);
+        roomBlock.removeClass('busy-room');
     }
 });
 
