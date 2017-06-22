@@ -93,19 +93,31 @@ Hotel.roomWithGuest();
 
 
 var container = $('.room-wrap');
-$('.container').on({
+container.on({
     mouseenter: function(){
         var roomBlock = $(this),
             roomId = roomBlock.attr('id')-1;
-        //console.log(guestName);
         roomBlock.append("<span id='roomInfo'></span>");
-        $('#roomInfo').text(Hotel.rooms[roomId].guest);
+        if (Hotel.checkRoom(roomId)) {
+            $('#roomInfo').text(Hotel.rooms[roomId].guest);
+        } else {$('#roomInfo').text("Номер свободен");}
+        //console.log(guestName);
     },
     mouseleave: function(){
             var roomBlock = $(this);
             roomBlock.find('#roomInfo').remove();
         }
     },'div');
+
+container.on('click','div',function(){
+    var roomBlock = $(this),
+        roomId = roomBlock.attr('id')-1;
+    if (!Hotel.checkRoom(roomId)) {
+        console.log('0');
+    }
+});
+
+
 
 
 /*container.onmouseover = function(e){
