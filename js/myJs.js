@@ -92,10 +92,23 @@ Hotel.roomWithGuest();
 //console.log(Hotel.numbOfBusyRooms());
 
 
-//console.log(rooms);
+var container = $('.room-wrap');
+$('.container').on({
+    mouseenter: function(){
+        var roomBlock = $(this),
+            roomId = roomBlock.attr('id')-1;
+        //console.log(guestName);
+        roomBlock.append("<span id='roomInfo'></span>");
+        $('#roomInfo').text(Hotel.rooms[roomId].guest);
+    },
+    mouseleave: function(){
+            var roomBlock = $(this);
+            roomBlock.find('#roomInfo').remove();
+        }
+    },'div');
 
-var container = document.getElementById('standardRoom');
-container.onmouseover = function(e){
+
+/*container.onmouseover = function(e){
     var roomBlock = e.target.closest('div'),
         roomId = roomBlock.id-1,
         //roomsGuest = Hotel.rooms[roomId].guest,
@@ -104,7 +117,7 @@ container.onmouseover = function(e){
     roomBlock.appendChild(guestName).setAttribute('id','roomInfo');
 
     console.log('1');
-}
+}*/
 
 /*function hoverRoom(){
     var rooms= $('.room-wrap').children();
@@ -112,11 +125,11 @@ container.onmouseover = function(e){
         console.log('0');
     });
 }*/
-var rooms= $('.room-wrap').children();
-$('.room-wrap').on('mouseleave','div',function(e){
+//var rooms= $('.room-wrap').children();
+/*$('.room-wrap').on('mouseleave','div',function(e){
     var elem = $(this);
     elem.find('#roomInfo').remove();
-});
+});*/
 
 
 
