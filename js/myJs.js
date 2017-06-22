@@ -67,20 +67,30 @@ var Hotel={
                 var newRoom = document.createElement('div');
                 newRoom.innerHTML = 'Room '+roomType;
                 document.getElementById('economyRoom').appendChild(newRoom).setAttribute('id', roomId);
+                newRoom.setAttribute('class', 'hotel-room');
                 //console.log(this.rooms[i]);
             } else {
                 if (roomType == 'lux'){
                     var newRoom = document.createElement('div');
                     newRoom.innerHTML = 'Room '+roomType;
                     document.getElementById('luxRoom').appendChild(newRoom).setAttribute('id', roomId);
+                    newRoom.setAttribute('class', 'hotel-room');
                 } else {
                     var newRoom = document.createElement('div');
                     newRoom.innerHTML = 'Room '+roomType;
                     document.getElementById('standardRoom').appendChild(newRoom).setAttribute('id', roomId);
+                    newRoom.setAttribute('class', 'hotel-room');
                 }
             }
         }
     }
+
+    /*addGuest: function(e){
+        var form = $('form'),
+            elem = e.target;
+        form.find('guestName').val = this.rooms[elem.id].guest;
+        console.log(this.rooms[2].guest);
+    }*/
 };
 
 console.log(Hotel.rooms.length);
@@ -107,14 +117,23 @@ container.on({
             var roomBlock = $(this);
             roomBlock.find('#roomInfo').remove();
         }
-    },'div');
+    },'div.hotel-room');
 
-container.on('click','div',function(){
+container.on('click','div.hotel-room',function(){
     var roomBlock = $(this),
         roomId = roomBlock.attr('id')-1;
     if (!Hotel.checkRoom(roomId)) {
-        roomBlock.parent().find('#checkInHotel').hide();
+        //roomBlock.parent().find('#checkInHotel').hide();
         console.log('0');
+        var form = $('form'),
+            guestName = form.find('input[name=guestName]').val();
+
+        form.submit(function(e){
+            e.preventDefault();
+            //Hotel.addGuest(roomBlock);
+            Hotel.rooms[roomId].guest = guestName;
+            console.log(Hotel.rooms[roomId]);
+        });
     }
 });
 
