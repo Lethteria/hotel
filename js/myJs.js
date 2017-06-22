@@ -83,14 +83,15 @@ var Hotel={
                 }
             }
         }
-    }
+    },
 
-    /*addGuest: function(e){
-        var form = $('form'),
-            elem = e.target;
-        form.find('guestName').val = this.rooms[elem.id].guest;
-        console.log(this.rooms[2].guest);
-    }*/
+    addGuest: function(id,name,surname,phone,email){
+        var room = this.rooms[id];
+        room.guest = name + ' ' + surname;
+        room.guestPhone = phone;
+        room.guestEmail = email;
+        //console.log(this.rooms[2].guest);
+    }
 };
 
 console.log(Hotel.rooms.length);
@@ -123,15 +124,17 @@ container.on('click','div.hotel-room',function(){
     var roomBlock = $(this),
         roomId = roomBlock.attr('id')-1;
     if (!Hotel.checkRoom(roomId)) {
-        //roomBlock.parent().find('#checkInHotel').hide();
+
         console.log('0');
         var form = $('form'),
-            guestName = form.find('input[name=guestName]').val();
+            name = form.find('input[name=guestName]').val();
+            surname = form.find('input[name=guestSurname]').val();
+            phone = form.find('input[name=guestPhone]').val();
+            email = form.find('input[type=email]').val();
 
         form.submit(function(e){
             e.preventDefault();
-            //Hotel.addGuest(roomBlock);
-            Hotel.rooms[roomId].guest = guestName;
+            Hotel.addGuest(roomId,name,surname,phone,email);
             console.log(Hotel.rooms[roomId]);
         });
     }
