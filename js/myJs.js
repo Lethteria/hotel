@@ -52,7 +52,7 @@ var Hotel={
         for (var i=0;i<this.rooms.length;i++){
             if(this.checkRoom(i)) {
                 var roomId = this.rooms[i].id;
-                    $('#'+roomId).css('color','#9e9e9e').addClass('busy-room');
+                    $('#'+roomId).addClass('busy-room');
                 //console.log(roomId);
             }
         }
@@ -72,18 +72,30 @@ var Hotel={
                 Col.setAttribute('class', 'col l1');
                 Col.appendChild(newRoom).setAttribute('id', roomId);
                 newRoom.setAttribute('class', 'hotel-room');
-
             } else {
                 if (roomType == 'lux'){
-                    var newRoom = document.createElement('div');
+                    var Col = document.createElement('div'),
+                        newRoom = document.createElement('div');
+                    document.getElementById('luxRoom').getElementsByTagName('div')[0].appendChild(Col);
                     newRoom.innerHTML = 'Room '+roomType;
-                    document.getElementById('luxRoom').appendChild(newRoom).setAttribute('id', roomId);
+                    console.log(newRoom);
+                    Col.setAttribute('class', 'col l1');
+                    Col.appendChild(newRoom).setAttribute('id', roomId);
                     newRoom.setAttribute('class', 'hotel-room');
                 } else {
-                    var newRoom = document.createElement('div');
+                    var Col = document.createElement('div'),
+                        newRoom = document.createElement('div');
+                    document.getElementById('standardRoom').getElementsByTagName('div')[0].appendChild(Col);
+                    newRoom.innerHTML = 'Room '+roomType;
+                    console.log(newRoom);
+                    Col.setAttribute('class', 'col l1');
+                    Col.appendChild(newRoom).setAttribute('id', roomId);
+                    newRoom.setAttribute('class', 'hotel-room');
+
+                    /*var newRoom = document.createElement('div');
                     newRoom.innerHTML = 'Room '+roomType;
                     document.getElementById('standardRoom').appendChild(newRoom).setAttribute('id', roomId);
-                    newRoom.setAttribute('class', 'hotel-room');
+                    newRoom.setAttribute('class', 'hotel-room');*/
                 }
             }
         }
@@ -142,7 +154,7 @@ container.on({
     mouseenter: function(){
         var roomBlock = $(this),
             roomId = roomBlock.attr('id')-1;
-        roomBlock.append("<span id='roomInfo'></span>");
+        roomBlock.append("<span id='roomInfo' class='roomInfo'></span>");
         if (Hotel.checkRoom(roomId)) {
             $('#roomInfo').text(Hotel.rooms[roomId].guest);
         } else {$('#roomInfo').text("Номер свободен");}
