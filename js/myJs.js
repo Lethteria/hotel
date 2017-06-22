@@ -99,6 +99,9 @@ var Hotel={
         room.guest = name + ' ' + surname;
         room.guestPhone = phone;
         room.guestEmail = email;
+        this.numbOfBusyRooms++;
+        this.showBusyRooms();
+        this.showFreeRooms();
     }
 };
 
