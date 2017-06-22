@@ -51,15 +51,14 @@ var Hotel={
     roomWithGuest: function(){
         for (var i=0;i<this.rooms.length;i++){
             if(this.checkRoom(i)) {
-                var roomId = this.rooms[i].id,
-                    Info = document.createElement('span');
-                    Info.innerHTML = " !!!";
-                    document.getElementById(roomId).appendChild(Info)
+                var roomId = this.rooms[i].id;
+                    $('#'+roomId).css('color','#9e9e9e').addClass('busy-room');
+                //console.log(roomId);
             }
         }
     },
 
-    show: function(){
+    showRooms: function(){
         for (var i=0;i<this.rooms.length;i++){
             var roomType = this.rooms[i].type,
                 roomId = this.rooms[i].id;
@@ -85,19 +84,30 @@ var Hotel={
         }
     },
 
+    showBusyRooms: function(){
+        var busyRooms = $('#busyRooms');
+        busyRooms.text(this.numbOfBusyRooms);
+    },
+
+    showFreeRooms: function(){
+        var freeRooms = $('#freeRooms');
+        freeRooms.text(this.numbOfRooms - this.numbOfBusyRooms);
+    },
+
     addGuest: function(id,name,surname,phone,email){
         var room = this.rooms[id];
         room.guest = name + ' ' + surname;
         room.guestPhone = phone;
         room.guestEmail = email;
-        //console.log(this.rooms[2].guest);
     }
 };
 
 console.log(Hotel.rooms.length);
-Hotel.show();
+Hotel.showRooms();
 Hotel.checkIn();
 Hotel.showGuest();
+Hotel.showBusyRooms();
+Hotel.showFreeRooms();
 Hotel.roomWithGuest();
 //console.log(Hotel.rooms);
 //console.log(Hotel.numbOfBusyRooms());
@@ -123,23 +133,23 @@ container.on({
 container.on('click','div.hotel-room',function(){
     var roomBlock = $(this),
         roomId = roomBlock.attr('id')-1;
-    if (!Hotel.checkRoom(roomId)) {
-
-        console.log('0');
+    if (!roomBlock.hasClass('busy-room')) {
         var form = $('form'),
             name = form.find('input[name=guestName]').val(),
             surname = form.find('input[name=guestSurname]').val(),
             phone = form.find('input[name=guestPhone]').val(),
             email = form.find('input[type=email]').val();
+        console.log('0');
+        console.log(roomId);
+
 
         form.submit(function(e){
             e.preventDefault();
             Hotel.addGuest(roomId,name,surname,phone,email);
-
-            /////выделить номер
-            roomBlock.append("<span>!!!</span>");
+            roomBlock.css('color','#9e9e9e').addClass('busy-room');
             console.log(Hotel.rooms[roomId]);
         });
+        console.log(roomId);
     }
 });
 
