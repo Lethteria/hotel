@@ -53,7 +53,7 @@ var Hotel={
             if(this.checkRoom(i)) {
                 var roomId = this.rooms[i].id,
                     Info = document.createElement('span');
-                    Info.innerHTML = " !!!",
+                    Info.innerHTML = " !!!";
                     document.getElementById(roomId).appendChild(Info)
             }
         }
@@ -82,6 +82,7 @@ var Hotel={
         }
     }
 };
+
 console.log(Hotel.rooms.length);
 Hotel.show();
 Hotel.occupancy();
@@ -89,5 +90,34 @@ Hotel.showGuest();
 Hotel.roomWithGuest();
 //console.log(Hotel.rooms);
 //console.log(Hotel.numbOfBusyRooms());
+
+
+//console.log(rooms);
+
+var container = document.getElementById('standardRoom');
+container.onmouseover = function(e){
+    var roomBlock = e.target.closest('div'),
+        roomId = roomBlock.id-1,
+        //roomsGuest = Hotel.rooms[roomId].guest,
+        guestName = document.createElement('span');
+        guestName.innerHTML = Hotel.rooms[roomId].guest;
+    roomBlock.appendChild(guestName).setAttribute('id','roomInfo');
+
+    console.log('1');
+}
+
+/*function hoverRoom(){
+    var rooms= $('.room-wrap').children();
+    $('.room-wrap').on('click','div',function(e){
+        console.log('0');
+    });
+}*/
+var rooms= $('.room-wrap').children();
+$('.room-wrap').on('mouseleave','div',function(e){
+    var elem = $(this);
+    elem.find('#roomInfo').remove();
+});
+
+
 
 
