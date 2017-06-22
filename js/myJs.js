@@ -127,14 +127,17 @@ container.on('click','div.hotel-room',function(){
 
         console.log('0');
         var form = $('form'),
-            name = form.find('input[name=guestName]').val();
-            surname = form.find('input[name=guestSurname]').val();
-            phone = form.find('input[name=guestPhone]').val();
+            name = form.find('input[name=guestName]').val(),
+            surname = form.find('input[name=guestSurname]').val(),
+            phone = form.find('input[name=guestPhone]').val(),
             email = form.find('input[type=email]').val();
 
         form.submit(function(e){
             e.preventDefault();
             Hotel.addGuest(roomId,name,surname,phone,email);
+
+            /////выделить номер
+            roomBlock.append("<span>!!!</span>");
             console.log(Hotel.rooms[roomId]);
         });
     }
