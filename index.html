@@ -20,14 +20,22 @@
 
             <div class="row"></div>
 
-            <form id="checkInStRoom" class="form-open">
+            <form id="checkInStRoom" class="form-open clearfix">
                 <div class="clearfix">
-                    <input type="text" placeholder="Name" name="guestName">
-                    <input type="text" placeholder="Surname" name="guestSurname">
+                    <div class="form-item">
+                        <input type="text" class="valid-item" placeholder="Name" name="guestName">
+                    </div>
+                    <div class="form-item">
+                        <input type="text" class="valid-item" placeholder="Surname" name="guestSurname">
+                    </div>
                 </div>
                 <div class="clearfix">
-                    <input type="text" placeholder="Phone" name="guestPhone">
-                    <input type="email" placeholder="Email" name="guestEmail">
+                    <div class="form-item">
+                        <input type="text" placeholder="Phone" name="guestPhone">
+                    </div>
+                    <div class="form-item">
+                        <input type="email" placeholder="Email" name="guestEmail">
+                    </div>
                 </div>
                 <button type="submit">Check-in</button>
             </form>

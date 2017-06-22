@@ -37,6 +37,8 @@ var Hotel={
                 var j = Math.floor( Math.random() * this.rooms.length );
             } while (this.checkRoom(j));
             this.rooms[j].guest = faker.name.findName();
+            this.rooms[j].guestPhone = faker.phone.phoneNumber();
+            this.rooms[j].guestEmail = faker.internet.email();
         }
     },
 
@@ -154,10 +156,16 @@ container.on({
     mouseenter: function(){
         var roomBlock = $(this),
             roomId = roomBlock.attr('id')-1;
-        roomBlock.append("<span id='roomInfo' class='roomInfo'></span>");
+        roomBlock.append("<div id='roomInfo' class='roomInfo'></div>");
         if (Hotel.checkRoom(roomId)) {
-            $('#roomInfo').text(Hotel.rooms[roomId].guest);
-        } else {$('#roomInfo').text("Номер свободен");}
+            var roomInfo = $('#roomInfo');
+            roomInfo.append("<span id='guest'></span><span id='guestPhone'></span><span id='guestEmail'></span>");
+            $('#guest').text(Hotel.rooms[roomId].guest);
+            $('#guestPhone').text(Hotel.rooms[roomId].guestPhone);
+            $('#guestEmail').text(Hotel.rooms[roomId].guestEmail);
+        } else {
+            $('#roomInfo').text("Номер свободен");
+        }
         //console.log(guestName);
     },
     mouseleave: function(){
