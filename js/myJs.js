@@ -31,7 +31,7 @@ var Hotel={
         }
     },
 
-    occupancy: function(){
+    checkIn: function(){
         for (var i=0; i < this.numbOfBusyRooms; i++){
             do {
                 var j = Math.floor( Math.random() * this.rooms.length );
@@ -85,7 +85,7 @@ var Hotel={
 
 console.log(Hotel.rooms.length);
 Hotel.show();
-Hotel.occupancy();
+Hotel.checkIn();
 Hotel.showGuest();
 Hotel.roomWithGuest();
 //console.log(Hotel.rooms);
@@ -113,6 +113,7 @@ container.on('click','div',function(){
     var roomBlock = $(this),
         roomId = roomBlock.attr('id')-1;
     if (!Hotel.checkRoom(roomId)) {
+        roomBlock.parent().find('#checkInHotel').hide();
         console.log('0');
     }
 });
