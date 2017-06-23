@@ -139,6 +139,17 @@ var Hotel={
     }
 };
 
+function addFofm(container){
+    container.append('<form class="form-open clearfix"><button type="submit">Check-in</button></form>');
+    container.find('form').append('<div class="clearfix"><input type="text" name="guestName" placeholder="Name">' +
+    '<input type="text" name="guestSurname" placeholder="Surname"></div>');
+    container.find('form').append('<div class="clearfix"><input type="text" name="guestPhone" placeholder="Phone">' +
+    '<input type="email" name="guestEmail" placeholder="guestEmail"></div>');
+    container.find('input').wrap("<div class='form-item'></div>>");
+    container.find('form').find('.clearfix').prependTo('form');
+    //console.log(container);
+}
+
 console.log(Hotel.rooms.length);
 Hotel.showRooms();
 Hotel.checkIn();
@@ -178,6 +189,8 @@ container.on('click','div.hotel-room',function(){
     var roomBlock = $(this),
         roomId = roomBlock.attr('id')-1;
     if (!roomBlock.hasClass('busy-room')) {
+        var container1 = roomBlock.closest('.room-wrap');
+        addFofm(container1);
         var form = $('form'),
             name = form.find('input[name=guestName]').val(),
             surname = form.find('input[name=guestSurname]').val(),
