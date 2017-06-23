@@ -59,19 +59,32 @@ var Hotel={
         }
     },
 
+    createRoom: function(text,roomId){
+        var Col = document.createElement('div'),
+            newRoom = document.createElement('div');
+        //document.getElementById('blockId').getElementsByTagName('div')[0].appendChild(Col);
+        newRoom.innerHTML = 'text';
+        Col.setAttribute('class', 'col l1 m2 s3');
+        Col.appendChild(newRoom).setAttribute('id', roomId);
+        newRoom.setAttribute('class', 'hotel-room');
+    },
     showRooms: function(){
         for (var i=0;i<this.rooms.length;i++){
             var roomType = this.rooms[i].type,
                 //roomId = this.rooms[i].id;
                 roomId = i+1;
             if (roomType == 'economy'){
-                var Col = document.createElement('div'),
-                    newRoom = document.createElement('div');
+                this.createRoom('Room E',roomId);
+
+                //var Col = document.createElement('div'),
+                    //newRoom = document.createElement('div');
                     document.getElementById('economyRoom').getElementsByTagName('div')[0].appendChild(Col);
-                newRoom.innerHTML = 'Room E';
-                Col.setAttribute('class', 'col l1 m2 s3');
-                Col.appendChild(newRoom).setAttribute('id', roomId);
-                newRoom.setAttribute('class', 'hotel-room');
+                //newRoom.innerHTML = 'Room E';
+                //Col.setAttribute('class', 'col l1 m2 s3');
+                //Col.appendChild(newRoom).setAttribute('id', roomId);
+                //newRoom.setAttribute('class', 'hotel-room');
+
+
             } else {
                 if (roomType == 'lux'){
                     var Col = document.createElement('div'),
@@ -208,11 +221,10 @@ container.on('click','div.hotel-room',function(){
                 console.log(roomId);
                 Hotel.addGuest(roomId,name,surname,phone,email);
                 roomBlock.addClass('busy-room');
-                form.find('.valid-item').val("");
+                container1.find('form').remove();
                 console.log(Hotel.rooms[roomId]);
             }
         });
-        //console.log(roomId);
     } else {
         $('#roomInfo').addClass('hide-info');
         roomBlock.closest('.room-wrap').append('<form class="removeGuest clearfix"><span>Очистить номер?</span>' +
