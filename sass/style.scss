@@ -78,7 +78,7 @@ $blue: #0086B3;
 
 form {
   position: relative;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 50%;
   input {
     padding: 10px 0 10px 20px;
@@ -173,7 +173,70 @@ form {
   margin-top: 45px;
 }
 .removeGuest {
+  margin-bottom: 20px;
+  text-align: right;
+  span {
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-left: 20px;
+  }
   button {
     margin-left: 20px;
+  }
+}
+
+@media (max-width: 1230px){
+  .hotel {
+    .roomInfo {
+      width: 80px;
+    }
+  }
+}
+@media (max-width: 992px){
+  .hotel {
+    h2 {
+      font-size: 24px;
+    }
+    .number-of-rooms {
+      font-size: 14px;
+    }
+    .room-wrap {
+      .item-title {
+        font-size: 18px;
+      }
+    }
+    .roomInfo {
+      display: none;
+    }
+    form {
+      width: 100%;
+    }
+    .removeGuest {
+      text-align: left;
+      span, button {
+        margin-left: 0;
+      }
+      button {
+        float: left;
+        margin-right: 30px;
+      }
+    }
+  }
+}
+@media (max-width: 600px){
+  form {
+    .form-item {
+      width: 100%;
+    }
+  }
+  .hotel {
+    h2 {
+      font-size: 18px;
+    }
+    .room-wrap {
+      .item-title {
+        font-size: 16px;
+      }
+    }
   }
 }

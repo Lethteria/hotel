@@ -216,7 +216,7 @@ container.on('click','div.hotel-room',function(){
     } else {
         $('#roomInfo').addClass('hide-info');
         roomBlock.closest('.room-wrap').append('<form class="removeGuest clearfix"><span>Очистить номер?</span>' +
-        '<div><button id="clearRoom" type="submit">Да</button><button id="closeForm" type="button">Нет</button></div></form>');
+        '<div class="clearfix"><button id="clearRoom" type="submit">Да</button><button id="closeForm" type="button">Нет</button></div></form>');
 
         roomBlock.closest('.room-wrap').find('.removeGuest').submit(function(e){
             e.preventDefault();

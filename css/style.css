@@ -208,7 +208,7 @@ body {
 
 form {
   position: relative;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 50%; }
   form input {
     padding: 10px 0 10px 20px;
@@ -278,5 +278,43 @@ form {
 .form-add-guest {
   margin-top: 45px; }
 
-.removeGuest button {
-  margin-left: 20px; }
+.removeGuest {
+  margin-bottom: 20px;
+  text-align: right; }
+  .removeGuest span {
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-left: 20px; }
+  .removeGuest button {
+    margin-left: 20px; }
+
+@media (max-width: 1230px) {
+  .hotel .roomInfo {
+    width: 80px; } }
+
+@media (max-width: 992px) {
+  .hotel h2 {
+    font-size: 24px; }
+  .hotel .number-of-rooms {
+    font-size: 14px; }
+  .hotel .room-wrap .item-title {
+    font-size: 18px; }
+  .hotel .roomInfo {
+    display: none; }
+  .hotel form {
+    width: 100%; }
+  .hotel .removeGuest {
+    text-align: left; }
+    .hotel .removeGuest span, .hotel .removeGuest button {
+      margin-left: 0; }
+    .hotel .removeGuest button {
+      float: left;
+      margin-right: 30px; } }
+
+@media (max-width: 600px) {
+  form .form-item {
+    width: 100%; }
+  .hotel h2 {
+    font-size: 18px; }
+  .hotel .room-wrap .item-title {
+    font-size: 16px; } }
