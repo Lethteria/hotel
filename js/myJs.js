@@ -22,9 +22,7 @@ var Hotel={
     percentBusy: 0.3,
     numbOfRooms: 20,
     numbOfBusyRooms: 6,
-    /*numbOfBusyRooms: function(){
-     return this.percentBusy * this.numbOfRooms
-     },*/
+
     checkRoom: function(id){
         if (this.rooms[id].guest){
             return true;
@@ -42,14 +40,6 @@ var Hotel={
         }
     },
 
-    showGuest: function(){ ////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        for (var i=0;i<this.rooms.length;i++){
-            if (this.rooms[i].guest){
-                console.log(this.rooms[i]);
-            }
-        }
-    },
-
     roomWithGuest: function(){
         for (var i=0;i<this.rooms.length;i++){
             if(this.checkRoom(i)) {
@@ -59,11 +49,11 @@ var Hotel={
         }
     },
 
-    createRoom: function(text,roomId){
+    createRoom: function(id,text,roomId){
         var Col = document.createElement('div'),
             newRoom = document.createElement('div');
-        //document.getElementById('blockId').getElementsByTagName('div')[0].appendChild(Col);
-        newRoom.innerHTML = 'text';
+        document.getElementById(id).getElementsByTagName('div')[0].appendChild(Col);
+        newRoom.innerHTML = text;
         Col.setAttribute('class', 'col l1 m2 s3');
         Col.appendChild(newRoom).setAttribute('id', roomId);
         newRoom.setAttribute('class', 'hotel-room');
@@ -71,37 +61,14 @@ var Hotel={
     showRooms: function(){
         for (var i=0;i<this.rooms.length;i++){
             var roomType = this.rooms[i].type,
-                //roomId = this.rooms[i].id;
                 roomId = i+1;
             if (roomType == 'economy'){
-                this.createRoom('Room E',roomId);
-
-                //var Col = document.createElement('div'),
-                    //newRoom = document.createElement('div');
-                    document.getElementById('economyRoom').getElementsByTagName('div')[0].appendChild(Col);
-                //newRoom.innerHTML = 'Room E';
-                //Col.setAttribute('class', 'col l1 m2 s3');
-                //Col.appendChild(newRoom).setAttribute('id', roomId);
-                //newRoom.setAttribute('class', 'hotel-room');
-
-
+                this.createRoom('economyRoom','Room E',roomId);
             } else {
                 if (roomType == 'lux'){
-                    var Col = document.createElement('div'),
-                        newRoom = document.createElement('div');
-                    document.getElementById('luxRoom').getElementsByTagName('div')[0].appendChild(Col);
-                    newRoom.innerHTML = 'Room L';
-                    Col.setAttribute('class', 'col l1 m2 s3');
-                    Col.appendChild(newRoom).setAttribute('id', roomId);
-                    newRoom.setAttribute('class', 'hotel-room');
+                    this.createRoom('luxRoom','Room L',roomId);
                 } else {
-                    var Col = document.createElement('div'),
-                        newRoom = document.createElement('div');
-                    document.getElementById('standardRoom').getElementsByTagName('div')[0].appendChild(Col);
-                    newRoom.innerHTML = 'Room S';
-                    Col.setAttribute('class', 'col l1 m2 s3');
-                    Col.appendChild(newRoom).setAttribute('id', roomId);
-                    newRoom.setAttribute('class', 'hotel-room');
+                    this.createRoom('standardRoom','Room S',roomId);
                 }
             }
         }
@@ -139,7 +106,6 @@ var Hotel={
         this.numbOfBusyRooms--;
         this.showBusyRooms();
         this.showFreeRooms();
-        console.log(room);
     }
 };
 
@@ -169,7 +135,6 @@ function myValidate(){
 
 Hotel.showRooms();
 Hotel.checkIn();
-Hotel.showGuest();
 Hotel.showBusyRooms();
 Hotel.showFreeRooms();
 Hotel.roomWithGuest();
@@ -218,11 +183,9 @@ container.on('click','div.hotel-room',function(){
                     surname = form.find('input[name=guestSurname]').val(),
                     phone = form.find('input[name=guestPhone]').val(),
                     email = form.find('input[type=email]').val();
-                console.log(roomId);
                 Hotel.addGuest(roomId,name,surname,phone,email);
                 roomBlock.addClass('busy-room');
                 container1.find('form').remove();
-                console.log(Hotel.rooms[roomId]);
             }
         });
     } else {
@@ -235,7 +198,6 @@ container.on('click','div.hotel-room',function(){
             Hotel.removeGuest(roomId);
             roomBlock.removeClass('busy-room');
             $(this).remove();
-
         });
     }
 });
