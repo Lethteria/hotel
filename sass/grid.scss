@@ -66,6 +66,7 @@ body {
   margin-right: auto;
   padding-right: 15px;
   padding-left: 15px;
+  width: 90%;
 }
 .row {
   margin-left: -0.75rem;
@@ -184,6 +185,9 @@ body {
 }
 
 @media (min-width: 993px) {
+  .container {
+    width: 95%;
+  }
   .row {
     .l1 {
       width: 8.333333333333333%;
@@ -237,7 +241,7 @@ body {
     }
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1230px) {
   .container {
     width: 1170px;
   }

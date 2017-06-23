@@ -68,8 +68,8 @@ var Hotel={
                 var Col = document.createElement('div'),
                     newRoom = document.createElement('div');
                     document.getElementById('economyRoom').getElementsByTagName('div')[0].appendChild(Col);
-                newRoom.innerHTML = 'Room '+roomType;
-                Col.setAttribute('class', 'col l1');
+                newRoom.innerHTML = 'Room E';
+                Col.setAttribute('class', 'col l1 m2 s3');
                 Col.appendChild(newRoom).setAttribute('id', roomId);
                 newRoom.setAttribute('class', 'hotel-room');
             } else {
@@ -77,16 +77,16 @@ var Hotel={
                     var Col = document.createElement('div'),
                         newRoom = document.createElement('div');
                     document.getElementById('luxRoom').getElementsByTagName('div')[0].appendChild(Col);
-                    newRoom.innerHTML = 'Room '+roomType;
-                    Col.setAttribute('class', 'col l1');
+                    newRoom.innerHTML = 'Room L';
+                    Col.setAttribute('class', 'col l1 m2 s3');
                     Col.appendChild(newRoom).setAttribute('id', roomId);
                     newRoom.setAttribute('class', 'hotel-room');
                 } else {
                     var Col = document.createElement('div'),
                         newRoom = document.createElement('div');
                     document.getElementById('standardRoom').getElementsByTagName('div')[0].appendChild(Col);
-                    newRoom.innerHTML = 'Room '+roomType;
-                    Col.setAttribute('class', 'col l1');
+                    newRoom.innerHTML = 'Room S';
+                    Col.setAttribute('class', 'col l1 m2 s3');
                     Col.appendChild(newRoom).setAttribute('id', roomId);
                     newRoom.setAttribute('class', 'hotel-room');
                 }

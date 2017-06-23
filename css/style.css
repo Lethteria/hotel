@@ -48,7 +48,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-right: 15px;
-  padding-left: 15px; }
+  padding-left: 15px;
+  width: 90%; }
 
 .row {
   margin-left: -0.75rem;
@@ -115,6 +116,8 @@ body {
     width: 100%; } }
 
 @media (min-width: 993px) {
+  .container {
+    width: 95%; }
   .row .l1, .row .l2, .row .l3, .row .l4, .row .l5, .row .l6, .row .l7, .row .l8, .row .l9, .row .l10, .row .l11, .row .l12 {
     width: 8.333333333333333%;
     margin-left: auto;
@@ -143,7 +146,7 @@ body {
   .row .l12 {
     width: 100%; } }
 
-@media (min-width: 1200px) {
+@media (min-width: 1230px) {
   .container {
     width: 1170px; } }
 
@@ -160,7 +163,7 @@ body {
     font-size: 20px; }
   .hotel .hotel-room {
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 10px;
     border: 1px solid;
     border-radius: 5px;
