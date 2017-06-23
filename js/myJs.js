@@ -42,7 +42,7 @@ var Hotel={
         }
     },
 
-    showGuest: function(){
+    showGuest: function(){ ////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         for (var i=0;i<this.rooms.length;i++){
             if (this.rooms[i].guest){
                 console.log(this.rooms[i]);
@@ -55,7 +55,6 @@ var Hotel={
             if(this.checkRoom(i)) {
                 var roomId = this.rooms[i].id;
                     $('#'+roomId).addClass('busy-room');
-                //console.log(roomId);
             }
         }
     },
@@ -70,7 +69,6 @@ var Hotel={
                     newRoom = document.createElement('div');
                     document.getElementById('economyRoom').getElementsByTagName('div')[0].appendChild(Col);
                 newRoom.innerHTML = 'Room '+roomType;
-                console.log(newRoom);
                 Col.setAttribute('class', 'col l1');
                 Col.appendChild(newRoom).setAttribute('id', roomId);
                 newRoom.setAttribute('class', 'hotel-room');
@@ -80,7 +78,6 @@ var Hotel={
                         newRoom = document.createElement('div');
                     document.getElementById('luxRoom').getElementsByTagName('div')[0].appendChild(Col);
                     newRoom.innerHTML = 'Room '+roomType;
-                    console.log(newRoom);
                     Col.setAttribute('class', 'col l1');
                     Col.appendChild(newRoom).setAttribute('id', roomId);
                     newRoom.setAttribute('class', 'hotel-room');
@@ -89,15 +86,9 @@ var Hotel={
                         newRoom = document.createElement('div');
                     document.getElementById('standardRoom').getElementsByTagName('div')[0].appendChild(Col);
                     newRoom.innerHTML = 'Room '+roomType;
-                    console.log(newRoom);
                     Col.setAttribute('class', 'col l1');
                     Col.appendChild(newRoom).setAttribute('id', roomId);
                     newRoom.setAttribute('class', 'hotel-room');
-
-                    /*var newRoom = document.createElement('div');
-                    newRoom.innerHTML = 'Room '+roomType;
-                    document.getElementById('standardRoom').appendChild(newRoom).setAttribute('id', roomId);
-                    newRoom.setAttribute('class', 'hotel-room');*/
                 }
             }
         }
@@ -146,20 +137,14 @@ function addForm(container){
     container.find('form').prepend('<div class="clearfix"><input type="text" name="guestName" placeholder="Name">' +
     '<input type="text" name="guestSurname" placeholder="Surname"></div>');
     container.find('input').wrap("<div class='form-item'></div>");
-    //container.find('form').find('.clearfix').prependTo('form', this);
 }
 
-console.log(Hotel.rooms.length);
 Hotel.showRooms();
 Hotel.checkIn();
 Hotel.showGuest();
 Hotel.showBusyRooms();
 Hotel.showFreeRooms();
 Hotel.roomWithGuest();
-
-//console.log(Hotel.rooms);
-//console.log(Hotel.numbOfBusyRooms());
-
 
 var container = $('.room-wrap');
 container.on({
@@ -219,48 +204,15 @@ container.on('click','div.hotel-room',function(){
             $(this).remove();
 
         });
-        //Hotel.removeGuest(roomId);
-        //roomBlock.removeClass('busy-room');
     }
 });
+
 container.on('click','button#closeForm',function(){
-
-
-
-
-            $(this).closest('.removeGuest').remove();
-
-
-        //Hotel.removeGuest(roomId);
-        //roomBlock.removeClass('busy-room');
-
+    $(this).closest('.removeGuest').remove();
 });
 
 
 
-
-/*container.onmouseover = function(e){
-    var roomBlock = e.target.closest('div'),
-        roomId = roomBlock.id-1,
-        //roomsGuest = Hotel.rooms[roomId].guest,
-        guestName = document.createElement('span');
-        guestName.innerHTML = Hotel.rooms[roomId].guest;
-    roomBlock.appendChild(guestName).setAttribute('id','roomInfo');
-
-    console.log('1');
-}*/
-
-/*function hoverRoom(){
-    var rooms= $('.room-wrap').children();
-    $('.room-wrap').on('click','div',function(e){
-        console.log('0');
-    });
-}*/
-//var rooms= $('.room-wrap').children();
-/*$('.room-wrap').on('mouseleave','div',function(e){
-    var elem = $(this);
-    elem.find('#roomInfo').remove();
-});*/
 
 
 
