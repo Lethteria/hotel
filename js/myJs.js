@@ -136,7 +136,21 @@ function addForm(container){
     '<input type="email" name="guestEmail" placeholder="guestEmail"></div>');
     container.find('form').prepend('<div class="clearfix"><input type="text" name="guestName" placeholder="Name">' +
     '<input type="text" name="guestSurname" placeholder="Surname"></div>');
+    container.find('input').attr('class',"valid-item");
     container.find('input').wrap("<div class='form-item'></div>");
+}
+
+function myValidate(){
+    $(this).find('.form-item').each(function(){
+        var $this = $(this);
+        if($this.find('.valid-item').val() == ''){
+            $this.addClass('has-error');
+            $this.find('.valid-item').after('<span class="form-icon error"></span>');
+        } else {
+            $this.removeClass('has-error');
+            $this.find('span').remove('.error');
+        }
+    });
 }
 
 Hotel.showRooms();
@@ -180,16 +194,23 @@ container.on('click','div.hotel-room',function(){
         var form = container1.find('form');
 
         form.submit(function(e){
-            e.preventDefault();
-            var
-                name = form.find('input[name=guestName]').val(),
-                surname = form.find('input[name=guestSurname]').val(),
-                phone = form.find('input[name=guestPhone]').val(),
-                email = form.find('input[type=email]').val();
-            console.log(roomId);
-            Hotel.addGuest(roomId,name,surname,phone,email);
-            roomBlock.addClass('busy-room');
-            console.log(Hotel.rooms[roomId]);
+            myValidate.call(this);
+            if ( form.find('.form-item').hasClass('has-error') ){
+                return false;
+            } else {
+                e.preventDefault();
+                var
+                    name = form.find('input[name=guestName]').val(),
+                    surname = form.find('input[name=guestSurname]').val(),
+                    phone = form.find('input[name=guestPhone]').val(),
+                    email = form.find('input[type=email]').val();
+                console.log(roomId);
+                Hotel.addGuest(roomId,name,surname,phone,email);
+                roomBlock.addClass('busy-room');
+                console.log(Hotel.rooms[roomId]);
+            }
+
+
         });
         //console.log(roomId);
     } else {
