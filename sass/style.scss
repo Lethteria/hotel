@@ -1,6 +1,6 @@
 $blue: #0086B3;
 .hotel {
-  padding: 20px;
+  padding: 20px 0 70px;
   h2 {
     margin-bottom: 1%;
     font-size: 36px;
@@ -61,6 +61,9 @@ $blue: #0086B3;
     span {
       display: block;
     }
+  }
+  .hide-info {
+    display: none;
   }
 }
 #standardRoom {
@@ -149,5 +152,10 @@ form {
   .error:before {
     content: '\f12a';
     color: #9c1212;
+  }
+}
+.removeGuest {
+  button {
+    margin-left: 20px;
   }
 }

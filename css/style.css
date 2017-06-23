@@ -151,7 +151,7 @@ body {
     width: 1170px; } }
 
 .hotel {
-  padding: 20px; }
+  padding: 20px 0 70px; }
   .hotel h2 {
     margin-bottom: 1%;
     font-size: 36px; }
@@ -194,6 +194,8 @@ body {
     background-color: #eeeeee; }
     .hotel .roomInfo span {
       display: block; }
+  .hotel .hide-info {
+    display: none; }
 
 #standardRoom {
   color: #0086B3; }
@@ -261,3 +263,6 @@ form {
   form .error:before {
     content: '\f12a';
     color: #9c1212; }
+
+.removeGuest button {
+  margin-left: 20px; }

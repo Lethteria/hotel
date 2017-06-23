@@ -139,15 +139,14 @@ var Hotel={
     }
 };
 
-function addFofm(container){
+function addForm(container){
     container.append('<form class="form-open clearfix"><button type="submit">Check-in</button></form>');
-    container.find('form').append('<div class="clearfix"><input type="text" name="guestName" placeholder="Name">' +
-    '<input type="text" name="guestSurname" placeholder="Surname"></div>');
-    container.find('form').append('<div class="clearfix"><input type="text" name="guestPhone" placeholder="Phone">' +
+    container.find('form').prepend('<div class="clearfix"><input type="text" name="guestPhone" placeholder="Phone">' +
     '<input type="email" name="guestEmail" placeholder="guestEmail"></div>');
-    container.find('input').wrap("<div class='form-item'></div>>");
-    container.find('form').find('.clearfix').prependTo('form');
-    //console.log(container);
+    container.find('form').prepend('<div class="clearfix"><input type="text" name="guestName" placeholder="Name">' +
+    '<input type="text" name="guestSurname" placeholder="Surname"></div>');
+    container.find('input').wrap("<div class='form-item'></div>");
+    //container.find('form').find('.clearfix').prependTo('form', this);
 }
 
 console.log(Hotel.rooms.length);
@@ -177,7 +176,6 @@ container.on({
         } else {
             $('#roomInfo').text("Номер свободен");
         }
-        //console.log(guestName);
     },
     mouseleave: function(){
             var roomBlock = $(this);
@@ -190,28 +188,52 @@ container.on('click','div.hotel-room',function(){
         roomId = roomBlock.attr('id')-1;
     if (!roomBlock.hasClass('busy-room')) {
         var container1 = roomBlock.closest('.room-wrap');
-        addFofm(container1);
-        var form = $('form'),
-            name = form.find('input[name=guestName]').val(),
-            surname = form.find('input[name=guestSurname]').val(),
-            phone = form.find('input[name=guestPhone]').val(),
-            email = form.find('input[type=email]').val();
-        //console.log('0');
-        console.log(roomId);
+        if (container1.find('form').length){
+            container1.find('form').remove();
+        }
+        addForm(container1);
+        var form = container1.find('form');
 
         form.submit(function(e){
             e.preventDefault();
+            var
+                name = form.find('input[name=guestName]').val(),
+                surname = form.find('input[name=guestSurname]').val(),
+                phone = form.find('input[name=guestPhone]').val(),
+                email = form.find('input[type=email]').val();
+            console.log(roomId);
             Hotel.addGuest(roomId,name,surname,phone,email);
-            roomBlock.css('color','#9e9e9e').addClass('busy-room');
+            roomBlock.addClass('busy-room');
             console.log(Hotel.rooms[roomId]);
         });
-        console.log(roomId);
+        //console.log(roomId);
     } else {
-        roomBlock.after('<form class="removeGuest"><span>Очистить номер?</span>' +
-        '<div><button id="closeForm" type="button">Нет</button><button id="clearRoom" type="submit">Да</button></div></form>');
-        Hotel.removeGuest(roomId);
-        roomBlock.removeClass('busy-room');
+        $('#roomInfo').addClass('hide-info');
+        roomBlock.closest('.room-wrap').append('<form class="removeGuest clearfix"><span>Очистить номер?</span>' +
+        '<div><button id="clearRoom" type="submit">Да</button><button id="closeForm" type="button">Нет</button></div></form>');
+
+        roomBlock.closest('.room-wrap').find('.removeGuest').submit(function(e){
+            e.preventDefault();
+            Hotel.removeGuest(roomId);
+            roomBlock.removeClass('busy-room');
+            $(this).remove();
+
+        });
+        //Hotel.removeGuest(roomId);
+        //roomBlock.removeClass('busy-room');
     }
+});
+container.on('click','button#closeForm',function(){
+
+
+
+
+            $(this).closest('.removeGuest').remove();
+
+
+        //Hotel.removeGuest(roomId);
+        //roomBlock.removeClass('busy-room');
+
 });
 
 
