@@ -131,11 +131,12 @@ var Hotel={
 };
 
 function addForm(container){
-    container.append('<form class="form-open clearfix"><button type="submit">Check-in</button></form>');
+    container.append('<form class="form-add-guest clearfix"><button type="submit">Check-in</button></form>');
     container.find('form').prepend('<div class="clearfix"><input type="text" name="guestPhone" placeholder="Phone">' +
     '<input type="email" name="guestEmail" placeholder="guestEmail"></div>');
     container.find('form').prepend('<div class="clearfix"><input type="text" name="guestName" placeholder="Name">' +
     '<input type="text" name="guestSurname" placeholder="Surname"></div>');
+    container.find('form').prepend('<span class="form-close form-icon" id="closeAddGuest"></span>');
     container.find('input').attr('class',"valid-item");
     container.find('input').wrap("<div class='form-item'></div>");
 }
@@ -207,10 +208,9 @@ container.on('click','div.hotel-room',function(){
                 console.log(roomId);
                 Hotel.addGuest(roomId,name,surname,phone,email);
                 roomBlock.addClass('busy-room');
+                form.find('.valid-item').val("");
                 console.log(Hotel.rooms[roomId]);
             }
-
-
         });
         //console.log(roomId);
     } else {
@@ -230,6 +230,9 @@ container.on('click','div.hotel-room',function(){
 
 container.on('click','button#closeForm',function(){
     $(this).closest('.removeGuest').remove();
+});
+container.on('click','span#closeAddGuest',function(){
+    $(this).closest('.form-add-guest').remove();
 });
 
 
